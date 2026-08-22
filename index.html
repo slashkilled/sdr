@@ -270,8 +270,8 @@
         }
 
         .game-shortcut, .tray-icon {
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
             object-fit: contain;
             image-rendering: pixelated;
         }
@@ -372,12 +372,44 @@
 
         <div class="taskbar-games">
             <img src="https://win98icons.alexmeub.com/icons/png/game_freecell-0.png" class="game-shortcut" title="Solitaire" alt="game">
-            <img src="https://win98icons.alexmeub.com/icons/png/game_minesweeper-0.png" class="game-shortcut" title="Minesweeper" alt="game">
+            
+            <!-- ПЕРЕРИСОВАННАЯ МИНА ИЗ ТВОЕГО СКТИНШОТА (SVG) -->
+            <svg class="game-shortcut" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Центральный шар -->
+                <rect x="5" y="4" width="6" height="8" fill="#000000"/>
+                <rect x="4" y="5" width="8" height="6" fill="#000000"/>
+                <!-- Блик -->
+                <rect x="6" y="6" width="2" height="2" fill="#ffffff"/>
+                <!-- Основные 4 шипа -->
+                <rect x="7" y="1" width="2" height="3" fill="#000000"/>
+                <rect x="7" y="12" width="2" height="3" fill="#000000"/>
+                <rect x="1" y="7" width="3" height="2" fill="#000000"/>
+                <rect x="12" y="7" width="3" height="2" fill="#000000"/>
+                <!-- Диагональные шипы -->
+                <rect x="3" y="3" width="1" height="1" fill="#000000"/>
+                <rect x="12" y="3" width="1" height="1" fill="#000000"/>
+                <rect x="3" y="12" width="1" height="1" fill="#000000"/>
+                <rect x="12" y="12" width="1" height="1" fill="#000000"/>
+            </svg>
+
             <img src="https://win98icons.alexmeub.com/icons/png/joystick-0.png" class="game-shortcut" title="Joystick" alt="game">
         </div>
 
         <div class="tray">
-            <img src="https://win98icons.alexmeub.com/icons/png/network_cool-0.png" class="tray-icon" title="Сеть" alt="network">
+            <!-- ПЕРЕРИСОВАННЫЙ ГЛОБУС С КРЕСТИКОМ ИЗ ТВОЕГО СКРИНШОТА (SVG) -->
+            <svg class="tray-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Контур Глобуса -->
+                <circle cx="7" cy="7" r="5.5" stroke="#000000" stroke-width="1.2" fill="none"/>
+                <line x1="1.5" y1="7" x2="12.5" y2="7" stroke="#000000" stroke-width="1.2"/>
+                <line x1="7" y1="1.5" x2="7" y2="12.5" stroke="#000000" stroke-width="1.2"/>
+                <path d="M4 2.5 C 5.5 4.5, 5.5 9.5, 4 11.5" stroke="#000000" stroke-width="1" fill="none"/>
+                <path d="M10 2.5 C 8.5 4.5, 8.5 9.5, 10 11.5" stroke="#000000" stroke-width="1" fill="none"/>
+                
+                <!-- Круг со значком X в правом нижнем углу -->
+                <circle cx="11.5" cy="11.5" r="3.5" fill="#000000"/>
+                <path d="M10 10 L13 13 M13 10 L10 13" stroke="#ffffff" stroke-width="1.2"/>
+            </svg>
+
             <img src="https://win98icons.alexmeub.com/icons/png/loudspeaker_rays-0.png" class="tray-icon" title="Звук" alt="sound">
             <span id="time">12:00</span>
         </div>
