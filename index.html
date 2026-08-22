@@ -224,14 +224,17 @@
             display: block;
         }
 
-        /* АДАПТИРОВАННАЯ НИЖНЯЯ ПАНЕЛЬ ПОД SAFARI/IPHONE */
+        /* ПОДНЯТАЯ НИЖНЯЯ ПАНЕЛЬ С ЗАПАСОМ ПОД СТРОКУ IPHONE */
         .taskbar {
             background-color: #c0c0c0;
             border-top: 3px solid #fff;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 6px 8px calc(env(safe-area-inset-bottom, 20px) + 6px) 8px;
+            padding-top: 6px;
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-bottom: max(60px, calc(env(safe-area-inset-bottom) + 40px));
             z-index: 10;
         }
 
@@ -267,23 +270,30 @@
         }
 
         .game-shortcut {
-            width: 30px;
-            height: 30px;
-            opacity: 0.85;
-            filter: drop-shadow(1px 1px 0px #fff);
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            image-rendering: pixelated;
         }
 
         .tray {
             height: 36px;
             display: flex;
-            gap: 10px;
+            gap: 8px;
             align-items: center;
             background: #c0c0c0;
             border: 2px solid;
             border-color: #808080 #fff #fff #808080;
-            padding: 0 10px;
+            padding: 0 8px;
             font-size: 14px;
             font-weight: bold;
+        }
+
+        .tray-icon {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+            image-rendering: pixelated;
         }
     </style>
 </head>
@@ -306,23 +316,18 @@
         <!-- ИКОНКА 2: pojelania.exe (ВСТРОЕННЫЙ SVG ТОРТ) -->
         <div class="icon" onclick="openWindow('game')">
             <svg class="icon-img" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Свечи -->
                 <rect x="10" y="4" width="2" height="6" fill="#00ffff"/>
                 <rect x="15" y="4" width="2" height="6" fill="#ffff00"/>
                 <rect x="20" y="4" width="2" height="6" fill="#00ffff"/>
                 <rect x="10" y="2" width="2" height="2" fill="#ff4500"/>
                 <rect x="15" y="2" width="2" height="2" fill="#ff4500"/>
                 <rect x="20" y="2" width="2" height="2" fill="#ff4500"/>
-                <!-- Верхний слой -->
                 <rect x="6" y="10" width="20" height="6" fill="#ff69b4"/>
                 <rect x="6" y="10" width="20" height="2" fill="#ffffff"/>
-                <!-- Средний слой -->
                 <rect x="4" y="16" width="24" height="6" fill="#ba55d3"/>
                 <rect x="4" y="16" width="24" height="2" fill="#ffb6c1"/>
-                <!-- Нижний слой -->
                 <rect x="2" y="22" width="28" height="6" fill="#8a2be2"/>
                 <rect x="2" y="22" width="28" height="2" fill="#ffffff"/>
-                <!-- Поднос -->
                 <rect x="0" y="28" width="32" height="2" fill="#c0c0c0"/>
             </svg>
             <div class="icon-text">pojelania.exe</div>
@@ -374,23 +379,13 @@
 
         <div class="taskbar-games">
             <img src="https://win98icons.alexmeub.com/icons/png/game_freecell-0.png" class="game-shortcut" title="Solitaire" alt="game">
-            
-            <!-- ВШИТАЯ ИКОНКА САПЁРА (МИНЕСВЕЕПЕР) -->
-            <svg class="game-shortcut" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="32" height="32" fill="#c0c0c0"/>
-                <rect x="2" y="2" width="28" height="28" fill="#c0c0c0" stroke="#ffffff" stroke-width="2"/>
-                <circle cx="16" cy="17" r="8" fill="#000000"/>
-                <rect x="14" y="5" width="4" height="4" fill="#ff0000"/>
-                <rect x="15" y="9" width="2" height="2" fill="#000000"/>
-                <rect x="10" y="11" width="3" height="3" fill="#ffffff"/>
-            </svg>
-
+            <img src="https://win98icons.alexmeub.com/icons/png/game_minesweeper-0.png" class="game-shortcut" title="Minesweeper" alt="game">
             <img src="https://win98icons.alexmeub.com/icons/png/joystick-0.png" class="game-shortcut" title="Joystick" alt="game">
         </div>
 
         <div class="tray">
-            <span title="Сеть">🌐</span>
-            <span title="Звук">🔊</span>
+            <img src="https://win98icons.alexmeub.com/icons/png/network_cool-0.png" class="tray-icon" title="Сеть" alt="network">
+            <img src="https://win98icons.alexmeub.com/icons/png/loudspeaker_rays-0.png" class="tray-icon" title="Звук" alt="sound">
             <span id="time">12:00</span>
         </div>
     </div>
