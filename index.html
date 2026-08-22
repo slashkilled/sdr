@@ -42,12 +42,41 @@
             padding-top: env(safe-area-inset-top, 0px);
         }
 
-        /* КОНТЕЙНЕР ЭКРАНА С АНИМАЦИЕЙ ВКТЮЧЕНИЯ/ВЫКЛЮЧЕНИЯ */
+        /* КОНТЕЙНЕР ЭКРАНА */
         .screen-container {
             flex: 1;
             position: relative;
             overflow: hidden;
             background-color: #050505;
+        }
+
+        /* ЭФФЕКТ ВЫКЛЮЧЕННОГО ЭКРАНА (ЛИНИИ) */
+        .off-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                rgba(18, 16, 16, 0) 50%, 
+                rgba(0, 0, 0, 0.85) 50%
+            ), linear-gradient(
+                90deg,
+                rgba(255, 0, 0, 0.03),
+                rgba(0, 255, 0, 0.01),
+                rgba(0, 0, 255, 0.03)
+            );
+            background-size: 100% 4px, 6px 100%;
+            z-index: 5;
+            pointer-events: none;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        /* СКРЫВАЕМ ЛИНИИ И ЗАТЕМНЕНИЕ ПРИ ВКЛЮЧЕНИИ */
+        .screen-container.power-on .off-overlay {
+            opacity: 0;
+            display: none;
         }
 
         /* РАБОЧИЙ СТОЛ */
@@ -70,10 +99,9 @@
             position: relative;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.2s ease-in-out;
         }
 
-        /* ЭФФЕКТ СТАРТА ЭКРАНА (CRT MONITOR ON) */
+        /* ЭФФЕКТ СТАРТА ЭКРАНА */
         .screen-container.power-on .desktop {
             opacity: 1;
             pointer-events: auto;
@@ -83,37 +111,16 @@
         @keyframes crtTurnOn {
             0% {
                 transform: scale(1, 0.005) cubic-bezier(0.1, 0.1, 0.1, 1);
-                filter: brightness(10);
+                filter: brightness(5);
             }
             50% {
                 transform: scale(1, 1) cubic-bezier(0.1, 0.1, 0.1, 1);
-                filter: brightness(3);
+                filter: brightness(2);
             }
             100% {
                 transform: scale(1, 1);
                 filter: brightness(1);
             }
-        }
-
-        /* ЭФФЕКТ ВЫКЛЮЧЕННОГО ЭКРАНА (ГОРИЗОНТАЛЬНЫЕ ЛИНИИ) */
-        .off-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                rgba(18, 16, 16, 0) 50%, 
-                rgba(0, 0, 0, 0.85) 50%
-            ), linear-gradient(
-                90deg,
-                rgba(255, 0, 0, 0.03),
-                rgba(0, 255, 0, 0.01),
-                rgba(0, 0, 255, 0.03)
-            );
-            background-size: 100% 4px, 6px 100%;
-            z-index: 5;
-            pointer-events: none;
         }
 
         /* ИКОНКИ НА РАБОЧЕМ СТОЛЕ */
@@ -486,7 +493,6 @@
         updateTime();
         setInterval(updateTime, 10000);
 
-        // ПЕРЕКЛЮЧЕНИЕ ПИТАНИЯ ЭКРАНА
         function togglePower() {
             const screen = document.getElementById('screen');
             const btn = document.getElementById('start-btn');
